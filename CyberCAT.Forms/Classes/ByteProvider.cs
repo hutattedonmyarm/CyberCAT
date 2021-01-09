@@ -17,7 +17,8 @@ namespace CyberCAT.Forms.Classes
         List<byte> _workingData;
         public ByteProvider(byte[] source)
         {
-            Data = (byte[])source.Clone();
+            // This is null when a new node which doesn't have TrailingBytes yet
+            Data = (byte[])(source ?? new byte[0]).Clone();
             _workingData = new List<byte>() { };
             _workingData.AddRange((IEnumerable<byte>)Data.Clone());
         }

@@ -170,7 +170,8 @@ namespace CyberCAT.Core.Classes.Parsers
                 }
                 result = stream.ToArray();
             }
-            //node.TrueSize = result.Length;
+            // Added values to nodes might change a node's size. The newly written size is needed to calculate the correct offsets when saving
+            node.TrueSize = result.Length;
             return result;
         }
 

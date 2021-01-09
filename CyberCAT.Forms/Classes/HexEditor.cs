@@ -17,7 +17,8 @@ namespace CyberCAT.Forms.Classes
         }
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value)
         {
-            if (!(value is byte[]))
+            // 'value is byte[]' returns false for null
+            if (context.PropertyDescriptor.PropertyType != typeof(byte[]))
             {
                 return value;
             }
